@@ -72,4 +72,26 @@ if (!empty($output['context'])) {
 }
 
 $ad = $output;
-var_dump($ad);
+if (!empty($ad['keyword'])) {
+    if (isset($ad['aRow']['zone_companion'][0])) {
+        setcookie('openx_context', json_encode(array(0 => array('==' => 'companionid:' . $ad['aRow']['zone_companion'][0]))));
+    }
+    else {
+        setcookie('openx_context', '', time() - 3600);
+    }
+}
+
+echo json_encode(array(
+    'src' => $ad['bannerContent'],
+    'click_url' => '',
+    'href' => $ad['aRow']['url'],
+    'campaignid' => $ad['campaignid'],
+    'campaignname' => $ad['aRow']['campaignname'],
+    'bannerid' => $ad['bannerid'],
+    'description' => $ad['aRow']['description'],
+    'img_url' => $ad['bannerContent'],
+    'action' => $ad['aRow']['url'],
+    'check_code' =>  $ad['aRow']['description'],
+    'tracking_api_url' => $ad['aRow']['alt'],
+    'tracking_click_api_url' => $ad['aRow']['statustext'],
+));
