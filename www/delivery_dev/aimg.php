@@ -82,14 +82,14 @@ if (strpos($ad['keyword'], 'lockscreen') !== false) {
 }
 
 echo json_encode(array(
-    'src' => $ad['bannerContent'],
+    'src' => str_replace('portal.china.handy.travel', 'api.china.handy.travel', $ad['bannerContent']),
     'click_url' => '',
     'href' => $ad['aRow']['url'],
     'campaignid' => $ad['campaignid'],
     'campaignname' => $ad['aRow']['campaignname'],
     'bannerid' => $ad['bannerid'],
     'description' => $ad['aRow']['description'],
-    'img_url' => $ad['bannerContent'],
+    'img_url' => str_replace('portal.china.handy.travel', 'api.china.handy.travel', $ad['bannerContent']),
     'action' => $ad['aRow']['url'],
     'check_code' =>  $ad['aRow']['description'],
     'tracking_api_url' => $ad['aRow']['alt'],
