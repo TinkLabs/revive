@@ -72,7 +72,7 @@ if (!empty($output['context'])) {
 }
 
 $ad = $output;
-if (!empty($ad['keyword'])) {
+if (strpos($ad['keyword'], 'lockscreen') !== false) {
     if (isset($ad['aRow']['zone_companion'][0])) {
         setcookie('openx_context', json_encode(array(0 => array('==' => 'companionid:' . $ad['aRow']['zone_companion'][0]))));
     }

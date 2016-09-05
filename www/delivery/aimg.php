@@ -1216,7 +1216,9 @@ $query = "
         c.clickwindow AS clickwindow,
         c.viewwindow AS viewwindow,
         m.advertiser_limitation AS advertiser_limitation,
-        m.agencyid AS agency_id
+        m.agencyid AS agency_id,
+        c.campaignname AS campaignname,
+        d.description AS description
     FROM
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['banners'])." AS d,
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['campaigns'])." AS c,
@@ -4367,7 +4369,7 @@ $context[] = $contextArray;
 }
 }
 $ad = $output;
-if (!empty($ad['keyword'])) {
+if (strpos($ad['keyword'], 'lockscreen') !== false) {
 if (isset($ad['aRow']['zone_companion'][0])) {
 setcookie('openx_context', json_encode(array(0 => array('==' => 'companionid:' . $ad['aRow']['zone_companion'][0]))));
 }

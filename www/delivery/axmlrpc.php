@@ -1216,7 +1216,9 @@ $query = "
         c.clickwindow AS clickwindow,
         c.viewwindow AS viewwindow,
         m.advertiser_limitation AS advertiser_limitation,
-        m.agencyid AS agency_id
+        m.agencyid AS agency_id,
+        c.campaignname AS campaignname,
+        d.description AS description
     FROM
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['banners'])." AS d,
         ".OX_escapeIdentifier($conf['table']['prefix'].$conf['table']['campaigns'])." AS c,
@@ -3187,7 +3189,7 @@ if ($GLOBALS['_MAX']['HTTP'] == 'https://') {
 $path = preg_replace('#/#', ':' . $aConf['openads']['sslPort'] . '/', $path, 1);
 }
 }
-return $GLOBALS['_MAX']['HTTP'] . $path . $file;
+return str_replace('http://', 'https://', $GLOBALS['_MAX']['HTTP']) . $path . $file;
 }
 }
 function pearErrorHandler($oError)
