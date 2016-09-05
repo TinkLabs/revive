@@ -148,7 +148,7 @@ EOF;
         }
         // Return the URL
         // tinklabs
-        return str_replace('http://', 'https://', $GLOBALS['_MAX']['HTTPS']) . $path . $file;
+        return str_replace('http://', 'https://', $GLOBALS['_MAX']['HTTP']) . $path . $file;
     }
 
 
